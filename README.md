@@ -5,7 +5,7 @@
 ```
 !git clone https://github.com/Nov05/JSAnimation.git
 !pip install git+file:///content/JSAnimation ## <- change file path accordingly
-!rm -r ./JSAnimation
+!rm -r /content/JSAnimation
 ```
 
 **🔵 Change logs**   
