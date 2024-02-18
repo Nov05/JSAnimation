@@ -18,7 +18,7 @@
                                       frame_prefix)
 ```
 
-* Issue solved: [AttributeError: 'HTMLWriter' object has no attribute '_temp_names'](https://colab.research.google.com/corgiredirector?site=https%3A%2F%2Fteratail.com%2Fquestions%2F280493)  
+* Issue solved: [`AttributeError: 'HTMLWriter' object has no attribute '_temp_names'`](https://colab.research.google.com/corgiredirector?site=https%3A%2F%2Fteratail.com%2Fquestions%2F280493)  
   Solution: change file `./JSAnimation/html_writer.py`  
 ```
     def _run(self):
