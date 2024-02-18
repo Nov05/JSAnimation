@@ -1,3 +1,36 @@
+
+# **👉 Changed by Nov05**  
+
+2024-02-17 
+* Issue solved: [`anim.save(filename, fps=20, clear_temp=False) TypeError: save() got an unexpected keyword argument 'clear_temp'.`](https://github.com/qutip/qutip/issues/798)  
+  Solution: change file `./JSAnimation/html_writer.py`  
+```
+        super(HTMLWriter, self).setup(fig, outfile, dpi,
+                                      # frame_prefix, clear_temp=False) ## changed by nov05 on 2024-02-17
+                                      frame_prefix)
+```
+
+* Issue solved: [AttributeError: 'HTMLWriter' object has no attribute '_temp_names'](https://colab.research.google.com/corgiredirector?site=https%3A%2F%2Fteratail.com%2Fquestions%2F280493)
+  Solution: change file `./JSAnimation/html_writer.py`
+```
+    def _run(self):
+        # make a ducktyped subprocess standin
+        # this is called by the MovieWriter base class, but not used here.
+        class ProcessStandin(object):
+            returncode = 0
+            def communicate(self):
+                # return ('', '') ## changed by nov05 on 2024-02-17
+                return (''.encode('utf-8'), ''.encode('utf-8'))
+```
+```
+        with open(self.outfile, 'w') as of:
+            of.write(JS_INCLUDE)
+            of.write(DISPLAY_TEMPLATE.format(id=self.new_id(),
+                                             # Nframes=len(self._temp_names), ## changed by nov05 on 2024-02-17
+                                             Nframes=len(self._temp_paths),
+```
+
+
 JSAnimation
 ===========
 
