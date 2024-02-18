@@ -279,7 +279,8 @@ class HTMLWriter(FileMovieWriter):
             frame_prefix = None
 
         super(HTMLWriter, self).setup(fig, outfile, dpi,
-                                      frame_prefix, clear_temp=False)
+                                      # frame_prefix, clear_temp=False) ## changed by nov05 on 2024-02-17
+                                      frame_prefix)
 
     def grab_frame(self, **savefig_kwargs):
         if self.embed_frames:
@@ -298,7 +299,8 @@ class HTMLWriter(FileMovieWriter):
         class ProcessStandin(object):
             returncode = 0
             def communicate(self):
-                return ('', '')
+                # return ('', '') ## changed by nov05 on 2024-02-17
+                return (''.encode('utf-8'), ''.encode('utf-8'))
         self._proc = ProcessStandin()
 
         # save the frames to an html file
@@ -320,7 +322,8 @@ class HTMLWriter(FileMovieWriter):
         with open(self.outfile, 'w') as of:
             of.write(JS_INCLUDE)
             of.write(DISPLAY_TEMPLATE.format(id=self.new_id(),
-                                             Nframes=len(self._temp_names),
+                                             # Nframes=len(self._temp_names), ## changed by nov05 on 2024-02-17
+                                             Nframes=len(self._temp_paths),
                                              fill_frames=fill_frames,
                                              interval=interval,
                                              icons=_Icons(),
