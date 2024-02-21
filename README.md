@@ -9,7 +9,7 @@
 ```
 
 **🔵 Change logs**   
-2024-02-17 fixed compatibility issues with `matplotlib>2.1.0`  
+2024-02-17 fixed compatibility issues with `matplotlib>2.1.0`. check [the example](https://github.com/Nov05/Google-Colaboratory/blob/master/20240217_pong_REINFORCE.ipynb).    
 * Issue solved: [`anim.save(filename, fps=20, clear_temp=False) TypeError: save() got an unexpected keyword argument 'clear_temp'.`](https://github.com/qutip/qutip/issues/798)  
   Solution: change file `./JSAnimation/html_writer.py`  
 ```
